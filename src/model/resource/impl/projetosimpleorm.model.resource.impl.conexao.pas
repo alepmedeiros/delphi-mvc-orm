@@ -3,37 +3,51 @@ unit projetosimpleorm.model.resource.impl.conexao;
 interface
 
 uses
+  Data.DB,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Stan.ExprFuncs,
+  FireDAC.Comp.UI,
+  FireDAC.Comp.Client,
   projetosimpleorm.model.resource.conexao;
 
 type
-  TConexao = class(TInterfacedObject, iConexao)
+  TConexaoFiredac = class(TInterfacedObject, iConexao)
     private
+      FConn: TFDConnection;
     public
       constructor Create;
       destructor Destroy; override;
       class function New : iConexao;
-      function Connect: iConexao;
+      function Connect: TCustomConnection;
   end;
 
 implementation
 
-function TConexao.Connect: iConexao;
+function TConexaoFiredac.Connect: TCustomConnection;
 begin
 
 end;
 
-constructor TConexao.Create;
+constructor TConexaoFiredac.Create;
 begin
 
 end;
 
-destructor TConexao.Destroy;
+destructor TConexaoFiredac.Destroy;
 begin
 
   inherited;
 end;
 
-class function TConexao.New : iConexao;
+class function TConexaoFiredac.New : iConexao;
 begin
   Result := Self.Create;
 end;

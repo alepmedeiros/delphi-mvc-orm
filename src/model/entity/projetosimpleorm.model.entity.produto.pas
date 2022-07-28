@@ -2,16 +2,27 @@ unit projetosimpleorm.model.entity.produto;
 
 interface
 
+uses
+  System.Classes,
+  SimpleAttributes;
+
 type
+  [Tabela('PRODUTO')]
   TProduto = class
   private
     FId: Integer;
     FDescricao: String;
     FPrecoVenda: Double;
+    FFoto: TStream;
   public
+    [Campo('ID'), Pk, AutoInc]
     property Id: Integer read FId write FId;
+    [Campo('DESCRICAO')]
     property Descricao: String read FDescricao write FDescricao;
+    [Campo('PRECOVENDA'), Format('#.##0,00')]
     property PrecoVenda: Double read FPrecoVenda write FPrecoVenda;
+    [Campo('FOTO')]
+    property Foto: TStream read FFoto write FFoto;
   end;
 
 implementation

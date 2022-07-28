@@ -6,6 +6,7 @@
 	"mainsrc": "./",
 	"projects": [],
 	"dependencies": {
+		"https://github.com/academiadocodigo/localcache4d": "^1.0.4",
 		"https://github.com/academiadocodigo/simpleorm": "^2.02.09"
 	}
 }
