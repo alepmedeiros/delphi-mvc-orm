@@ -33,17 +33,17 @@ implementation
 
 function TConexaoFiredac.Connect: TCustomConnection;
 begin
-
+  Result := FConn;
 end;
 
 constructor TConexaoFiredac.Create;
 begin
-
+  FConn := TFDConnection.Create(nil);
 end;
 
 destructor TConexaoFiredac.Destroy;
 begin
-
+  FConn.DisposeOf;
   inherited;
 end;
 
