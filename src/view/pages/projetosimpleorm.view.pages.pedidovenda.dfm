@@ -23,8 +23,6 @@ object PagePedidoVenda: TPagePedidoVenda
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 751
-    ExplicitHeight = 717
     object Panel1: TPanel
       Left = 0
       Top = 0
@@ -32,45 +30,71 @@ object PagePedidoVenda: TPagePedidoVenda
       Height = 209
       Align = alTop
       BevelOuter = bvNone
-      Padding.Left = 20
-      Padding.Right = 20
       TabOrder = 0
-      ExplicitTop = 4
-      ExplicitWidth = 751
       object Label10: TLabel
-        Left = 28
-        Top = 147
-        Width = 74
-        Height = 13
+        Left = 25
+        Top = 144
+        Width = 87
+        Height = 16
         Caption = 'C'#243'digo Produto'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
       object Label11: TLabel
         Left = 179
-        Top = 147
-        Width = 56
-        Height = 13
+        Top = 144
+        Width = 65
+        Height = 16
         Caption = 'Quantidade'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
       object Label12: TLabel
         Left = 300
-        Top = 147
-        Width = 64
-        Height = 13
+        Top = 144
+        Width = 78
+        Height = 16
         Caption = 'Valor Unit'#225'rio'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
       object Label13: TLabel
-        Left = 28
-        Top = 91
-        Width = 69
-        Height = 13
+        Left = 25
+        Top = 83
+        Width = 82
+        Height = 16
         Caption = 'C'#243'digo Cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
       object Label14: TLabel
         Left = 179
-        Top = 91
-        Width = 78
-        Height = 13
+        Top = 85
+        Width = 94
+        Height = 16
         Caption = 'Nome do Cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
       end
       object Panel5: TPanel
         Left = 20
@@ -236,7 +260,7 @@ object PagePedidoVenda: TPagePedidoVenda
       end
       object Panel11: TPanel
         Left = 20
-        Top = 106
+        Top = 100
         Width = 153
         Height = 41
         BevelOuter = bvNone
@@ -274,7 +298,7 @@ object PagePedidoVenda: TPagePedidoVenda
       end
       object Panel12: TPanel
         Left = 174
-        Top = 106
+        Top = 100
         Width = 363
         Height = 41
         BevelOuter = bvNone
@@ -313,16 +337,17 @@ object PagePedidoVenda: TPagePedidoVenda
         end
       end
       object Panel13: TPanel
-        Left = 20
+        Left = 0
         Top = 0
-        Width = 707
+        Width = 747
         Height = 66
         Align = alTop
         BevelOuter = bvNone
         TabOrder = 6
-        ExplicitWidth = 711
+        ExplicitLeft = 20
+        ExplicitWidth = 707
         object Label2: TLabel
-          Left = 20
+          Left = 10
           Top = 6
           Width = 72
           Height = 21
@@ -335,7 +360,7 @@ object PagePedidoVenda: TPagePedidoVenda
           ParentFont = False
         end
         object Label1: TLabel
-          Left = 20
+          Left = 10
           Top = 23
           Width = 97
           Height = 47
@@ -348,14 +373,20 @@ object PagePedidoVenda: TPagePedidoVenda
           ParentFont = False
         end
         object Label9: TLabel
-          Left = 421
-          Top = 8
-          Width = 87
-          Height = 13
+          Left = 451
+          Top = 13
+          Width = 105
+          Height = 16
           Caption = 'N'#250'mero do Pedido'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
         end
         object Panel14: TPanel
-          Left = 415
+          Left = 446
           Top = 27
           Width = 143
           Height = 41
@@ -394,7 +425,7 @@ object PagePedidoVenda: TPagePedidoVenda
           end
         end
         object Panel15: TPanel
-          Left = 558
+          Left = 590
           Top = 27
           Width = 153
           Height = 41
@@ -449,9 +480,6 @@ object PagePedidoVenda: TPagePedidoVenda
       Padding.Right = 20
       Padding.Bottom = 10
       TabOrder = 1
-      ExplicitTop = 193
-      ExplicitWidth = 751
-      ExplicitHeight = 466
       object gridItensPedido: TDBGrid
         Left = 20
         Top = 10
@@ -459,7 +487,13 @@ object PagePedidoVenda: TPagePedidoVenda
         Height = 369
         Align = alClient
         BorderStyle = bsNone
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
         Options = [dgTitles, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick, dgTitleHotTrack]
+        ParentFont = False
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -513,8 +547,6 @@ object PagePedidoVenda: TPagePedidoVenda
       Align = alBottom
       BevelOuter = bvNone
       TabOrder = 2
-      ExplicitTop = 659
-      ExplicitWidth = 751
       object Panel9: TPanel
         Left = 465
         Top = 8
@@ -540,18 +572,30 @@ object PagePedidoVenda: TPagePedidoVenda
         end
         object Label8: TLabel
           Left = 14
-          Top = 13
-          Width = 81
-          Height = 13
+          Top = 12
+          Width = 98
+          Height = 16
           Caption = 'Total do Pedido: '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
         end
         object lblValorTotal: TLabel
-          Left = 214
-          Top = 13
-          Width = 38
-          Height = 13
+          Left = 208
+          Top = 12
+          Width = 44
+          Height = 16
           Alignment = taRightJustify
           Caption = 'R$ 0,00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
         end
       end
       object Panel10: TPanel
