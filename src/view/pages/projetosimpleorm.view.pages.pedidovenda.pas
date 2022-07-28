@@ -57,6 +57,17 @@ type
     Panel15: TPanel;
     Shape12: TShape;
     btnListar_ListarTodos: TSpeedButton;
+    Panel16: TPanel;
+    Panel17: TPanel;
+    Panel18: TPanel;
+    Panel19: TPanel;
+    Panel20: TPanel;
+    Panel21: TPanel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
   private
     { Private declarations }
   public
