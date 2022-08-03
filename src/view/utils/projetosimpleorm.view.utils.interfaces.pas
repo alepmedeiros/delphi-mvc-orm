@@ -8,14 +8,11 @@ uses
   Vcl.ExtCtrls;
 
 type
-  iForm = interface;
-
-  iGerenciadorForm = interface
-    function Add: iGerenciadorForm;
+  iGerenciadorForm<T> = interface
+    function Add: iGerenciadorForm<T>;
     function Get: TForm;
     function GetIndex: TForm;
-    function Remove: iGerenciadorForm;
-    function Form: iForm;
+    function Remove: iGerenciadorForm<T>;
   end;
 
   iForm = interface
@@ -27,6 +24,7 @@ type
     function Parent: TPanel; overload;
     function Index(Value: Boolean): iForm; overload;
     function Index: Boolean; overload;
+    function FormAction: iGerenciadorForm<iForm>;
   end;
 
 implementation

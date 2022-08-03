@@ -5,30 +5,29 @@ interface
 uses
   projetosimpleorm.view.utils.interfaces,
   Vcl.Forms,
-  projetosimpleorm.view.utils.impl.Forms,
   System.Generics.Collections;
 
 type
-  TGerenciadorForm = class(TInterfacedObject, iGerenciadorForm)
+  TGerenciadorForm<T> = class(TInterfacedObject, iGerenciadorForm<T>)
   private
+    [weak]
     FForms: iForm;
     FFormIndex: TForm;
     FListForm: TObjectDictionary<String, TForm>;
     procedure LimpaListaForms;
   public
-    constructor Create;
+    constructor Create(Forms: iForm);
     destructor Destroy; override;
-    class function New: iGerenciadorForm;
-    function Add: iGerenciadorForm;
+    class function New(Forms: iForm): iGerenciadorForm<T>;
+    function Add: iGerenciadorForm<T>;
     function Get: TForm;
     function GetIndex: TForm;
-    function Remove: iGerenciadorForm;
-    function Form: iForm;
+    function Remove: iGerenciadorForm<T>;
   end;
 
 implementation
 
-function TGerenciadorForm.Add: iGerenciadorForm;
+function TGerenciadorForm<T>.Add: iGerenciadorForm<T>;
 var
   lForm: TForm;
 begin
@@ -46,45 +45,40 @@ begin
     FFormIndex := lForm;
 end;
 
-constructor TGerenciadorForm.Create;
+constructor TGerenciadorForm<T>.Create(Forms: iForm);
 begin
-  FForms := TForms.New;
+  FForms := Forms;
   FListForm := TObjectDictionary<String, TForm>.Create;
 end;
 
-destructor TGerenciadorForm.Destroy;
+destructor TGerenciadorForm<T>.Destroy;
 begin
   FListForm.DisposeOf;
   inherited;
 end;
 
-function TGerenciadorForm.Form: iForm;
-begin
-  Result := FForms;
-end;
-
-procedure TGerenciadorForm.LimpaListaForms;
+procedure TGerenciadorForm<T>.LimpaListaForms;
 begin
   if FListForm.Count > 10 then
     FListForm.Clear;
 end;
 
-function TGerenciadorForm.Get: TForm;
+function TGerenciadorForm<T>.Get: TForm;
 begin
   FListForm.TryGetValue(FForms.Key, Result);
 end;
 
-function TGerenciadorForm.GetIndex: TForm;
+function TGerenciadorForm<T>.GetIndex: TForm;
 begin
   Result := FFormIndex;
 end;
 
-class function TGerenciadorForm.New: iGerenciadorForm;
+class function TGerenciadorForm<T>.New(Forms: iForm): iGerenciadorForm<T>;
 begin
-  Result := Self.Create;
+  Result := Self.Create(Forms);
 end;
 
-function TGerenciadorForm.Remove: iGerenciadorForm;
+function TGerenciadorForm<T>.Remove: iGerenciadorForm<T>;
 var
   lForm: TForm;
 begin

@@ -5,7 +5,8 @@ interface
 uses
   System.Classes,
   Vcl.ExtCtrls,
-  projetosimpleorm.view.utils.interfaces;
+  projetosimpleorm.view.utils.interfaces,
+  projetosimpleorm.view.utils.impl.gerenciadorforms;
 
 type
   TForms = class(TInterfacedObject, iForm)
@@ -14,6 +15,7 @@ type
     FComponentClass: TComponentClass;
     FParent: TPanel;
     FIndex: Boolean;
+    FForm: iGerenciadorForm<iForm>;
   public
     constructor Create;
     destructor Destroy; override;
@@ -26,6 +28,7 @@ type
     function Parent: TPanel; overload;
     function Index(Value: Boolean): iForm; overload;
     function Index: Boolean; overload;
+    function FormAction: iGerenciadorForm<iForm>;
   end;
 
 implementation
@@ -50,6 +53,13 @@ destructor TForms.Destroy;
 begin
 
   inherited;
+end;
+
+function TForms.FormAction: iGerenciadorForm<iForm>;
+begin
+  if not Assigned(FForm) then
+    FForm := TGerenciadorForm<iForm>.New(Self);
+  Result := FForm;
 end;
 
 function TForms.Index: Boolean;

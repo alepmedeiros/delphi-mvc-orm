@@ -26,7 +26,9 @@ uses
   projetosimpleorm.view.pages.produto,
   projetosimpleorm.controller.interfaces,
   projetosimpleorm.controller,
-  projetosimpleorm.view.pages.configuracoes;
+  projetosimpleorm.view.pages.configuracoes,
+  projetosimpleorm.view.utils.interfaces,
+  projetosimpleorm.view.utils.impl.forms;
 
 type
   TPagePedidoVenda = class(TForm)
@@ -118,14 +120,17 @@ type
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
     procedure btnListar_ListarTodosClick(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     FController: iController;
+    FForms: iForm;
 
     procedure FixarTamanhoForm;
     procedure FicarColumnsGrid;
+
+    procedure ChamaForm(Key: String; Form: TComponentClass);
   public
 
   end;
@@ -143,24 +148,17 @@ begin
   FicarColumnsGrid;
 
   FController := TController.New;
+  FForms := TForms.New;
 end;
 
 procedure TPagePedidoVenda.SpeedButton1Click(Sender: TObject);
-var
-  lProduto: TPageProduto;
 begin
-  lProduto := TPageProduto.Create(self);
-  lProduto.Parent := pnlEmb;
-  lProduto.Show;
+  ChamaForm('Produto', TPageProduto);
 end;
 
 procedure TPagePedidoVenda.SpeedButton2Click(Sender: TObject);
-var
-  lCliente: TPageCliente;
 begin
-  lCliente := TPageCliente.Create(self);
-  lCliente.Parent := pnlEmb;
-  lCliente.Show;
+  ChamaForm('Cliente', TPageCliente);
 end;
 
 procedure TPagePedidoVenda.SpeedButton3Click(Sender: TObject);
@@ -174,12 +172,8 @@ begin
 end;
 
 procedure TPagePedidoVenda.SpeedButton5Click(Sender: TObject);
-var
-  lConfiguracao: TPageConfiguracoes;
 begin
-  lConfiguracao := TPageConfiguracoes.Create(Self);
-  lConfiguracao.Parent := pnlEmb;
-  lConfiguracao.Show;
+  ChamaForm('Configuracoes', TPageConfiguracoes);
 end;
 
 procedure TPagePedidoVenda.FixarTamanhoForm;
@@ -196,6 +190,15 @@ procedure TPagePedidoVenda.btnListar_ListarTodosClick(Sender: TObject);
 begin
   FController.Pedido.Build.ListarPorId(StrToInt(edtNumeroPedido.Text))
     .DataSource(DsPedidoItens)
+end;
+
+procedure TPagePedidoVenda.ChamaForm(Key: String; Form: TComponentClass);
+begin
+  FForms
+    .Key(Key)
+    .ComponentClass(Form)
+    .Parent(pnlEmb)
+    .FormAction.Add;
 end;
 
 procedure TPagePedidoVenda.FicarColumnsGrid;
