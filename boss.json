@@ -7,6 +7,7 @@
 	"projects": [],
 	"dependencies": {
 		"https://github.com/academiadocodigo/localcache4d": "^1.0.4",
+		"https://github.com/academiadocodigo/router4delphi": "^1.0.7",
 		"https://github.com/academiadocodigo/simpleorm": "^2.02.09"
 	}
 }

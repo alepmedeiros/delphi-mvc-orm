@@ -3,9 +3,25 @@ unit projetosimpleorm.view.pages.pedidovenda;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,
-  Vcl.DBGrids, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Data.DB,
+  Datasnap.DBClient,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage,
+  Vcl.WinXCtrls, projetosimpleorm.view.pages.cliente,
+  projetosimpleorm.model.entity.cliente, projetosimpleorm.view.pages.produto;
 
 type
   TPagePedidoVenda = class(TForm)
@@ -79,6 +95,10 @@ type
     Panel18: TPanel;
     Image1: TImage;
     SpeedButton3: TSpeedButton;
+    Panel28: TPanel;
+    Image2: TImage;
+    SpeedButton5: TSpeedButton;
+    SplitView1: TSplitView;
     pnlMenu: TPanel;
     Panel19: TPanel;
     SpeedButton1: TSpeedButton;
@@ -86,17 +106,18 @@ type
     SpeedButton2: TSpeedButton;
     Panel21: TPanel;
     SpeedButton4: TSpeedButton;
+    pnlback: TPanel;
+    pnlEmb: TPanel;
     procedure FormCreate(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     procedure FixarTamanhoForm;
     procedure FicarColumnsGrid;
-    procedure PreparaMenu;
-    procedure AcaoMenu;
   public
-    { Public declarations }
+
   end;
 
 var
@@ -110,17 +131,29 @@ procedure TPagePedidoVenda.FormCreate(Sender: TObject);
 begin
   FixarTamanhoForm;
   FicarColumnsGrid;
-  PreparaMenu;
+end;
+
+procedure TPagePedidoVenda.SpeedButton1Click(Sender: TObject);
+var
+  lProduto: TPageProduto;
+begin
+  lProduto:= TPageProduto.Create(self);
+  lProduto.Parent := pnlEmb;
+  lProduto.Show;
 end;
 
 procedure TPagePedidoVenda.SpeedButton2Click(Sender: TObject);
+var
+  lCliente: TPageCliente;
 begin
-  AcaoMenu;
+  lCliente := TPageCliente.Create(self);
+  lCliente.Parent := pnlEmb;
+  lCliente.Show;
 end;
 
 procedure TPagePedidoVenda.SpeedButton3Click(Sender: TObject);
 begin
-  AcaoMenu;
+  SplitView1.Opened := not SplitView1.Opened;
 end;
 
 procedure TPagePedidoVenda.SpeedButton4Click(Sender: TObject);
@@ -132,36 +165,19 @@ procedure TPagePedidoVenda.FixarTamanhoForm;
 begin
   Self.WindowState := wsNormal;
   Self.Position := poScreenCenter;
-  self.Constraints.MaxHeight := Self.ClientHeight;
+  Self.Constraints.MaxHeight := Self.ClientHeight;
   Self.Constraints.MinHeight := Self.ClientHeight;
   Self.Constraints.MaxWidth := Self.ClientWidth;
   Self.Constraints.MinWidth := Self.ClientWidth;
-end;
-
-procedure TPagePedidoVenda.AcaoMenu;
-begin
-  if pnlMenu.Width = 0 then
-  begin
-    pnlMenu.Width := 200;
-    exit;
-  end;
-  pnlMenu.Width := 0;
 end;
 
 procedure TPagePedidoVenda.FicarColumnsGrid;
 begin
   gridItensPedido.Columns[0].Width := pnlTitleCodigo.Width;
   gridItensPedido.Columns[1].Width := pnlTitleDescricao.Width;
-  gridItensPedido.Columns[2].Width := pnlTitleQuantidade.Width+1;
-  gridItensPedido.Columns[3].Width := pnlTitleValorUnitario.Width+1;
-  gridItensPedido.Columns[4].Width := pnlTitleValorTotal.Width-15;
-end;
-
-procedure TPagePedidoVenda.PreparaMenu;
-begin
-  pnlMenu.Width := 0;
-  pnlMenu.Left := 0;
-  pnlMenu.Height := pnlContainer.Height;
+  gridItensPedido.Columns[2].Width := pnlTitleQuantidade.Width + 1;
+  gridItensPedido.Columns[3].Width := pnlTitleValorUnitario.Width + 1;
+  gridItensPedido.Columns[4].Width := pnlTitleValorTotal.Width - 15;
 end;
 
 end.
