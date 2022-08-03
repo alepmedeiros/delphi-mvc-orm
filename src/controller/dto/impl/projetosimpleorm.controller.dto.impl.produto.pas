@@ -39,7 +39,7 @@ end;
 constructor TProdutoDTO.Create;
 begin
   FEntity := TProduto.Create;
-  FService := TServiceSimpleORM<TProduto>.New(Self);
+  FService := TServiceSimpleORM<TProduto>.New(FEntity);
 end;
 
 function TProdutoDTO.Descricao: String;

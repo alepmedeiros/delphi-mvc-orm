@@ -139,10 +139,6 @@ object PagePedidoVenda: TPagePedidoVenda
                     Font.Style = []
                     ParentFont = False
                     TabOrder = 0
-                    ExplicitLeft = 14
-                    ExplicitTop = 11
-                    ExplicitWidth = 115
-                    ExplicitHeight = 18
                   end
                 end
                 object Panel15: TPanel
@@ -184,6 +180,7 @@ object PagePedidoVenda: TPagePedidoVenda
                     Font.Name = 'Tahoma'
                     Font.Style = []
                     ParentFont = False
+                    OnClick = btnListar_ListarTodosClick
                     ExplicitTop = 4
                   end
                 end
@@ -344,10 +341,6 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 14
-                  ExplicitTop = 12
-                  ExplicitWidth = 126
-                  ExplicitHeight = 18
                 end
               end
               object Panel12: TPanel
@@ -394,10 +387,6 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 14
-                  ExplicitTop = 12
-                  ExplicitWidth = 331
-                  ExplicitHeight = 18
                 end
               end
               object Panel7: TPanel
@@ -445,10 +434,6 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 14
-                  ExplicitTop = 12
-                  ExplicitWidth = 91
-                  ExplicitHeight = 18
                 end
               end
               object Panel11: TPanel
@@ -496,10 +481,6 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 14
-                  ExplicitTop = 12
-                  ExplicitWidth = 126
-                  ExplicitHeight = 18
                 end
               end
               object Panel24: TPanel
@@ -544,10 +525,6 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
-                  ExplicitLeft = 14
-                  ExplicitTop = 11
-                  ExplicitWidth = 126
-                  ExplicitHeight = 18
                 end
               end
             end
@@ -2928,6 +2905,7 @@ object PagePedidoVenda: TPagePedidoVenda
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = SpeedButton5Click
           ExplicitLeft = 8
           ExplicitTop = 0
           ExplicitWidth = 23
@@ -2935,5 +2913,9 @@ object PagePedidoVenda: TPagePedidoVenda
         end
       end
     end
+  end
+  object DsPedidoItens: TDataSource
+    Left = 513
+    Top = 386
   end
 end

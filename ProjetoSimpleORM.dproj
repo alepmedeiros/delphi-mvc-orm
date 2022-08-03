@@ -140,6 +140,11 @@
         <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.produto.pas"/>
         <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedido.pas"/>
         <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedidoitens.pas"/>
+        <DCCReference Include="src\controller\projetosimpleorm.controller.interfaces.pas"/>
+        <DCCReference Include="src\controller\projetosimpleorm.controller.pas"/>
+        <DCCReference Include="src\view\utils\projetosimpleorm.view.utils.interfaces.pas"/>
+        <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.forms.pas"/>
+        <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

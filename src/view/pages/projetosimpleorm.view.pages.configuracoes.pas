@@ -55,6 +55,7 @@ type
     Panel21: TPanel;
     Shape12: TShape;
     Edit11: TEdit;
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,5 +68,10 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TPageConfiguracoes.SpeedButton1Click(Sender: TObject);
+begin
+  Close;
+end;
 
 end.

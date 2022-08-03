@@ -20,8 +20,13 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Imaging.pngimage,
-  Vcl.WinXCtrls, projetosimpleorm.view.pages.cliente,
-  projetosimpleorm.model.entity.cliente, projetosimpleorm.view.pages.produto;
+  Vcl.WinXCtrls,
+  projetosimpleorm.view.pages.cliente,
+  projetosimpleorm.model.entity.cliente,
+  projetosimpleorm.view.pages.produto,
+  projetosimpleorm.controller.interfaces,
+  projetosimpleorm.controller,
+  projetosimpleorm.view.pages.configuracoes;
 
 type
   TPagePedidoVenda = class(TForm)
@@ -108,12 +113,17 @@ type
     SpeedButton4: TSpeedButton;
     pnlback: TPanel;
     pnlEmb: TPanel;
+    DsPedidoItens: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnListar_ListarTodosClick(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
   private
+    FController: iController;
+
     procedure FixarTamanhoForm;
     procedure FicarColumnsGrid;
   public
@@ -131,13 +141,15 @@ procedure TPagePedidoVenda.FormCreate(Sender: TObject);
 begin
   FixarTamanhoForm;
   FicarColumnsGrid;
+
+  FController := TController.New;
 end;
 
 procedure TPagePedidoVenda.SpeedButton1Click(Sender: TObject);
 var
   lProduto: TPageProduto;
 begin
-  lProduto:= TPageProduto.Create(self);
+  lProduto := TPageProduto.Create(self);
   lProduto.Parent := pnlEmb;
   lProduto.Show;
 end;
@@ -158,17 +170,32 @@ end;
 
 procedure TPagePedidoVenda.SpeedButton4Click(Sender: TObject);
 begin
-  Self.Close;
+  self.Close;
+end;
+
+procedure TPagePedidoVenda.SpeedButton5Click(Sender: TObject);
+var
+  lConfiguracao: TPageConfiguracoes;
+begin
+  lConfiguracao := TPageConfiguracoes.Create(Self);
+  lConfiguracao.Parent := pnlEmb;
+  lConfiguracao.Show;
 end;
 
 procedure TPagePedidoVenda.FixarTamanhoForm;
 begin
-  Self.WindowState := wsNormal;
-  Self.Position := poScreenCenter;
-  Self.Constraints.MaxHeight := Self.ClientHeight;
-  Self.Constraints.MinHeight := Self.ClientHeight;
-  Self.Constraints.MaxWidth := Self.ClientWidth;
-  Self.Constraints.MinWidth := Self.ClientWidth;
+  self.WindowState := wsNormal;
+  self.Position := poScreenCenter;
+  self.Constraints.MaxHeight := self.ClientHeight;
+  self.Constraints.MinHeight := self.ClientHeight;
+  self.Constraints.MaxWidth := self.ClientWidth;
+  self.Constraints.MinWidth := self.ClientWidth;
+end;
+
+procedure TPagePedidoVenda.btnListar_ListarTodosClick(Sender: TObject);
+begin
+  FController.Pedido.Build.ListarPorId(StrToInt(edtNumeroPedido.Text))
+    .DataSource(DsPedidoItens)
 end;
 
 procedure TPagePedidoVenda.FicarColumnsGrid;

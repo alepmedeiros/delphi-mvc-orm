@@ -795,6 +795,7 @@ object PageConfiguracoes: TPageConfiguracoes
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = SpeedButton1Click
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -2070,10 +2071,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 126
-            ExplicitHeight = 18
           end
         end
         object Panel7: TPanel
@@ -2118,10 +2115,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 459
-            ExplicitHeight = 18
           end
         end
         object Panel11: TPanel
@@ -2165,10 +2158,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 126
-            ExplicitHeight = 18
           end
         end
         object Panel14: TPanel
@@ -2214,9 +2203,6 @@ object PageConfiguracoes: TPageConfiguracoes
             ParentFont = False
             PasswordChar = '*'
             TabOrder = 0
-            ExplicitTop = 11
-            ExplicitWidth = 118
-            ExplicitHeight = 18
           end
         end
         object Panel15: TPanel
@@ -2260,10 +2246,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 126
-            ExplicitHeight = 18
           end
         end
       end
@@ -2357,10 +2339,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 342
-            ExplicitHeight = 18
           end
         end
         object Panel19: TPanel
@@ -2405,10 +2383,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 51
-            ExplicitHeight = 18
           end
         end
         object Panel21: TPanel
@@ -2453,10 +2427,6 @@ object PageConfiguracoes: TPageConfiguracoes
             Font.Style = []
             ParentFont = False
             TabOrder = 0
-            ExplicitLeft = 14
-            ExplicitTop = 11
-            ExplicitWidth = 126
-            ExplicitHeight = 18
           end
         end
       end
