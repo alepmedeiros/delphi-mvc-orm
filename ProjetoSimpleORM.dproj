@@ -58,7 +58,7 @@
         <UWP_DelphiLogo44>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_44.png</UWP_DelphiLogo44>
         <UWP_DelphiLogo150>$(BDS)\bin\Artwork\Windows\UWP\delphi_UwpDefault_150.png</UWP_DelphiLogo150>
         <SanitizedProjectName>ProjetoSimpleORM</SanitizedProjectName>
-        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\localcache4d\samples\LocalCache4D;modules\localcache4d\src;modules\simpleorm\Sample\ActiveRecord_Builder\controller;modules\simpleorm\Sample\ActiveRecord_Builder\dto;modules\simpleorm\Sample\ActiveRecord_Builder\model\entity;modules\simpleorm\Sample\ActiveRecord_Builder\resources;modules\simpleorm\Sample\ActiveRecord_Builder\services;modules\simpleorm\Sample\ActiveRecord_Builder\view;modules\simpleorm\Sample\Entidades;modules\simpleorm\Sample\FMX;modules\simpleorm\Sample\Firedac;modules\simpleorm\Sample\RestDW;modules\simpleorm\Sample\Unidac;modules\simpleorm\Sample\Validation;modules\simpleorm\Sample\Validation\.dcu;modules\simpleorm\Sample\Validation\Base\View;modules\simpleorm\Sample\Validation\Entidade;modules\simpleorm\Sample\Validation\Export;modules\simpleorm\Sample\Validation\View;modules\simpleorm\Sample\horse\Controller;modules\simpleorm\Sample\horse;modules\simpleorm\Sample\horse\Model\Connection;modules\simpleorm\Sample\horse\Model\Entity;modules\simpleorm\Sample\horse\Model;modules\simpleorm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\localcache4d\samples\LocalCache4D;modules\localcache4d\src;modules\simpleorm\Sample\ActiveRecord_Builder\controller;modules\simpleorm\Sample\ActiveRecord_Builder\dto;modules\simpleorm\Sample\ActiveRecord_Builder\model\entity;modules\simpleorm\Sample\ActiveRecord_Builder\resources;modules\simpleorm\Sample\ActiveRecord_Builder\services;modules\simpleorm\Sample\ActiveRecord_Builder\view;modules\simpleorm\Sample\Entidades;modules\simpleorm\Sample\FMX;modules\simpleorm\Sample\Firedac;modules\simpleorm\Sample\RestDW;modules\simpleorm\Sample\Unidac;modules\simpleorm\Sample\Validation\Base\View;modules\simpleorm\Sample\Validation\Entidade;modules\simpleorm\Sample\Validation\Export;modules\simpleorm\Sample\Validation\View;modules\simpleorm\Sample\horse\Controller;modules\simpleorm\Sample\horse;modules\simpleorm\Sample\horse\Model\Connection;modules\simpleorm\Sample\horse\Model\Entity;modules\simpleorm\Sample\horse\Model;modules\simpleorm;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;DBXDb2Driver;DBXInterBaseDriver;vclactnband;TPComponent;vclFireDAC;bindcompvclsmp;emsclientfiredac;DataSnapFireDAC;tethering;svnui;FireDACADSDriver;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;vcltouch;vcldb;bindcompfmx;svn;DBXOracleDriver;inetdb;FmxTeeUI;emsedge;FireDACIBDriver;fmx;fmxdae;vcledge;vclib;FireDACDBXDriver;dbexpress;IndyCore;vclx;dsnap;DataSnapCommon;emsclient;FireDACCommon;PanelTransparente;RESTBackendComponents;DataSnapConnectors;VCLRESTComponents;soapserver;vclie;bindengine;DBXMySQLDriver;CloudService;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;FireDACCommonODBC;FireDACCommonDriver;DataSnapClient;inet;bindcompdbx;IndyIPCommon;vcl;DBXSybaseASEDriver;IndyIPServer;TBGWebCharts;IndySystem;FireDACDb2Driver;bindcompvclwinx;dsnapcon;FireDACMSAccDriver;FireDACInfxDriver;fmxFireDAC;vclimg;TeeDB;FireDAC;emshosting;FireDACSqliteDriver;FireDACPgDriver;ibmonitor;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;FMXTee;soaprtl;DbxCommonDriver;ibxpress;Tee;DataSnapServer;xmlrtl;DataSnapNativeClient;ibxbindings;fmxobj;FireDACDSDriver;soapmidas;rtl;emsserverresource;DbxClientDriver;vclwinx;DBXSybaseASADriver;CustomIPTransport;vcldsnap;bindcomp;appanalytics;DBXInformixDriver;IndyIPClient;bindcompvcl;GridSystem;TeeUI;dbxcds;VclSmp;adortl;FireDACODBCDriver;DataSnapIndy10ServerTransport;DataSnapProviderClient;dsnapxml;dbrtl;FireDACMongoDBDriver;IndyProtocols;inetdbxpress;fmxase;$(DCC_UsePackage)</DCC_UsePackage>
@@ -103,26 +103,38 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\projetosimpleorm.view.pages.pedidovenda.pas">
-            <Form>PagePedidoVenda</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="src\projetosimpleorm.view.pages.cliente.pas">
+        <DCCReference Include="src\view\pages\projetosimpleorm.view.pages.cliente.pas">
             <Form>PageCliente</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\projetosimpleorm.view.pages.configuracoes.pas">
+        <DCCReference Include="src\view\pages\projetosimpleorm.view.pages.configuracoes.pas">
             <Form>PageConfiguracoes</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\projetosimpleorm.view.pages.produto.pas">
+        <DCCReference Include="src\view\pages\projetosimpleorm.view.pages.pedidovenda.pas">
+            <Form>PagePedidoVenda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\pages\projetosimpleorm.view.pages.produto.pas">
             <Form>PageProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\utils\projetosimpleorm.view.utils.interfaces.pas"/>
-        <DCCReference Include="src\utils\impl\projetosimpleorm.view.utils.impl.forms.pas"/>
-        <DCCReference Include="src\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas"/>
-        <DCCReference Include="src\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas"/>
+        <DCCReference Include="src\view\utils\projetosimpleorm.view.utils.interfaces.pas"/>
+        <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.forms.pas"/>
+        <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas"/>
+        <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas"/>
+        <DCCReference Include="src\model\resource\projetosimpleorm.model.resource.interfaces.pas"/>
+        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.conexaofiredac.pas"/>
+        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.configuracao.pas"/>
+        <DCCReference Include="src\model\service\projetosimpleorm.model.sevice.interfaces.pas"/>
+        <DCCReference Include="src\model\service\impl\projetosimpleorm.model.service.impl.servicesimpleorm.pas"/>
+        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.factory.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.cliente.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.endereco.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedido.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedidoitens.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pessoa.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.produto.pas"/>
         <RcItem Include="src\assert\configuracao.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>configuracao</ResourceId>
