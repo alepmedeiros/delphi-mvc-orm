@@ -63,14 +63,14 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton1: TSpeedButton
+        object btnSair: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
-          OnClick = SpeedButton1Click
+          OnClick = btnSairClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -103,13 +103,14 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton2: TSpeedButton
+        object btnSalvar: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = btnSalvarClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -142,13 +143,14 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton3: TSpeedButton
+        object btnExcluir: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = btnExcluirClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -167,7 +169,6 @@ object PageProduto: TPageProduto
         Padding.Right = 2
         Padding.Bottom = 2
         TabOrder = 3
-        ExplicitLeft = 790
         object Image4: TImage
           AlignWithMargins = True
           Left = 5
@@ -182,13 +183,14 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton5: TSpeedButton
+        object btnListar: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = btnListarClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -229,12 +231,9 @@ object PageProduto: TPageProduto
             Caption = 'Pre'#231'o de Venda'
             Width = 150
           end>
+        RowSelect = True
         TabOrder = 0
         ViewStyle = vsReport
-        ExplicitLeft = 98
-        ExplicitTop = -1
-        ExplicitWidth = 810
-        ExplicitHeight = 332
       end
     end
     object Panel6: TPanel

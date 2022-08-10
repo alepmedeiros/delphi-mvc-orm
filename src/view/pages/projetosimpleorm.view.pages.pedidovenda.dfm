@@ -342,6 +342,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
+                  OnChange = edtCodigoProdutoChange
                 end
               end
               object Panel12: TPanel
@@ -526,6 +527,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
+                  OnChange = edtCodigoClienteChange
                 end
               end
             end
@@ -956,6 +958,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
+                  OnClick = btnFinalizarPedidoClick
                   ExplicitLeft = -11
                 end
               end

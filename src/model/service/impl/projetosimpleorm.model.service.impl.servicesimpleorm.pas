@@ -47,7 +47,7 @@ type
     function Atualizar: iService<T>;
     function Excluir: iService<T>; overload;
     function Excluir(Field, Value: String): iService<T>; overload;
-    function DataSource(var aDataSource: TDataSource): iService<T>;
+    function DataSource(aDataSource: TDataSource): iService<T>;
     function This: T;
   end;
 
@@ -62,22 +62,22 @@ end;
 constructor TServiceSimpleORM<T>.Create(Parent: T);
 begin
   FParent := Parent;
-  FDataSource := TDataSource.Create(nil);
+//  FDataSource := TDataSource.Create(nil);
   FConexao := TResource.New.Conexao;
   FConn := TSimpleQueryFiredac.New(TFDConnection(FConexao.Connect));
-  FDAO := TSimpleDAO<T>.New(FConn).DataSource(FDataSource);
+  FDAO := TSimpleDAO<T>.New(FConn);
 end;
 
-function TServiceSimpleORM<T>.DataSource(var aDataSource: TDataSource)
+function TServiceSimpleORM<T>.DataSource(aDataSource: TDataSource)
   : iService<T>;
 begin
   Result := Self;
-  aDataSource := FDataSource;
+  FDAO.DataSource(aDataSource);
 end;
 
 destructor TServiceSimpleORM<T>.Destroy;
 begin
-  FDataSource.DisposeOf;
+//  FDataSource.DisposeOf;
   inherited;
 end;
 

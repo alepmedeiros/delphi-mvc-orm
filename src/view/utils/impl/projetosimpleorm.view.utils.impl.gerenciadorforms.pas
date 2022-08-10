@@ -53,7 +53,7 @@ end;
 
 destructor TGerenciadorForm<T>.Destroy;
 begin
-  FListForm.DisposeOf;
+  FListForm.Free;
   inherited;
 end;
 

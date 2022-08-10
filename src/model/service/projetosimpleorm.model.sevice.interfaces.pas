@@ -3,7 +3,7 @@ unit projetosimpleorm.model.sevice.interfaces;
 interface
 
 uses
-  Data.DB;
+  Data.DB, System.Classes;
 
 type
   iService<T: Class> = interface
@@ -14,7 +14,7 @@ type
     function Atualizar: iService<T>;
     function Excluir: iService<T>; overload;
     function Excluir(Field, Value: String): iService<T>; overload;
-    function DataSource(var aDataSource: TDataSource): iService<T>;
+    function DataSource(aDataSource: TDataSource): iService<T>;
     function This: T;
   end;
 

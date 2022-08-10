@@ -23,12 +23,22 @@ uses
   projetosimpleorm.model.entity.pedido in 'src\model\entity\projetosimpleorm.model.entity.pedido.pas',
   projetosimpleorm.model.entity.pedidoitens in 'src\model\entity\projetosimpleorm.model.entity.pedidoitens.pas',
   projetosimpleorm.model.entity.pessoa in 'src\model\entity\projetosimpleorm.model.entity.pessoa.pas',
-  projetosimpleorm.model.entity.produto in 'src\model\entity\projetosimpleorm.model.entity.produto.pas';
+  projetosimpleorm.model.entity.produto in 'src\model\entity\projetosimpleorm.model.entity.produto.pas',
+  projetosimpleorm.controller.dto.interfaces in 'src\controller\dto\projetosimpleorm.controller.dto.interfaces.pas',
+  projetosimpleorm.controller.dto.impl.cliente in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.cliente.pas',
+  projetosimpleorm.controller.dto.impl.endereco in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.endereco.pas',
+  projetosimpleorm.controller.dto.impl.pedido in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedido.pas',
+  projetosimpleorm.controller.dto.impl.pedidoitens in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedidoitens.pas',
+  projetosimpleorm.controller.dto.impl.pessoa in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pessoa.pas',
+  projetosimpleorm.controller.dto.impl.produto in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.produto.pas',
+  projetosimpleorm.controller.interfaces in 'src\controller\projetosimpleorm.controller.interfaces.pas',
+  projetosimpleorm.controller.impl.controller in 'src\controller\impl\projetosimpleorm.controller.impl.controller.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPagePedidoVenda, PagePedidoVenda);
   Application.Run;

@@ -135,6 +135,15 @@
         <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedidoitens.pas"/>
         <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pessoa.pas"/>
         <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.produto.pas"/>
+        <DCCReference Include="src\controller\dto\projetosimpleorm.controller.dto.interfaces.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.cliente.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.endereco.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedido.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedidoitens.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pessoa.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.produto.pas"/>
+        <DCCReference Include="src\controller\projetosimpleorm.controller.interfaces.pas"/>
+        <DCCReference Include="src\controller\impl\projetosimpleorm.controller.impl.controller.pas"/>
         <RcItem Include="src\assert\configuracao.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>configuracao</ResourceId>

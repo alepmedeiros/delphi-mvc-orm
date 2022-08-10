@@ -40,7 +40,7 @@ end;
 
 destructor TProduto.Destroy;
 begin
-  FFoto.DisposeOf;
+  FreeAndNil(FFoto);
   inherited;
 end;
 
