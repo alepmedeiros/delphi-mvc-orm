@@ -103,19 +103,62 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="src\view\pages\projetosimpleorm.view.pages.pedidovenda.pas">
+        <DCCReference Include="src\projetosimpleorm.view.pages.pedidovenda.pas">
             <Form>PagePedidoVenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedido.pas"/>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedidoitens.pas"/>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pessoa.pas"/>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.endereco.pas"/>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.contato.pas"/>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.cliente.pas"/>
-        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.produto.pas"/>
-        <DCCReference Include="src\model\resource\projetosimpleorm.model.resource.conexao.pas"/>
-        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.conexao.pas"/>
+        <DCCReference Include="src\projetosimpleorm.view.pages.cliente.pas">
+            <Form>PageCliente</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\projetosimpleorm.view.pages.configuracoes.pas">
+            <Form>PageConfiguracoes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\projetosimpleorm.view.pages.produto.pas">
+            <Form>PageProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\utils\projetosimpleorm.view.utils.interfaces.pas"/>
+        <DCCReference Include="src\utils\impl\projetosimpleorm.view.utils.impl.forms.pas"/>
+        <DCCReference Include="src\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas"/>
+        <DCCReference Include="src\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas"/>
+        <RcItem Include="src\assert\configuracao.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>configuracao</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\default-image.jpg">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>defaultimage</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\default-user.jpg">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>userdefault</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\excluir.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>excluir</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\menu.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>menu</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\noimage.jpg">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>noimage</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\sair.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>sair</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\salvar.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>salvar</ResourceId>
+        </RcItem>
+        <RcItem Include="src\assert\to-do-list.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>lista</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -143,9 +186,63 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="src\assert\sair.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\default-image.jpg" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\configuracao.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\salvar.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\excluir.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\noimage.jpg" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="bin\ProjetoSimpleORM.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ProjetoSimpleORM.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\to-do-list.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\default-user.jpg" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="src\assert\menu.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
