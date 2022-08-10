@@ -4,7 +4,6 @@ interface
 
 uses
   System.SysUtils,
-  Data.DB,
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
   FireDAC.Stan.Error,
@@ -14,8 +13,13 @@ uses
   FireDAC.Stan.Pool,
   FireDAC.Stan.Async,
   FireDAC.Phys,
+  FireDAC.Phys.SQLite,
+  FireDAC.Phys.SQLiteDef,
   FireDAC.Stan.ExprFuncs,
+  FireDAC.Phys.SQLiteWrapper.Stat,
+  FireDAC.VCLUI.Wait,
   FireDAC.Comp.UI,
+  Data.DB,
   FireDAC.Comp.Client,
   projetosimpleorm.model.resource;
 
@@ -35,24 +39,28 @@ implementation
 
 function TConexaoFiredac.Connect: TCustomConnection;
 begin
-  FConn.Params.DriverID := FConfiguracao.DriverId;
-  FConn.Params.Database := FConfiguracao.Database;
-  FConn.Params.UserName := FConfiguracao.UserName;
-  FConn.Params.Password := FConfiguracao.Password;
-  FConn.Params.Add('Port=' + FConfiguracao.Port);
-  FConn.Params.Add('Server=' + FConfiguracao.Server);
+  try
+    FConn.Params.DriverID := FConfiguracao.DriverId;
+    FConn.Params.Database := FConfiguracao.Database;
+    FConn.Params.UserName := FConfiguracao.UserName;
+    FConn.Params.Password := FConfiguracao.Password;
+    FConn.Params.Add('Port=' + FConfiguracao.Port);
+    FConn.Params.Add('Server=' + FConfiguracao.Server);
 
-  if not FConfiguracao.Schema.IsEmpty then
-  begin
-    FConn.Params.Add('MetaCurSchema=' + FConfiguracao.Schema);
-    FConn.Params.Add('MetaDefSchema=' + FConfiguracao.Schema);
+    if not FConfiguracao.Schema.IsEmpty then
+    begin
+      FConn.Params.Add('MetaCurSchema=' + FConfiguracao.Schema);
+      FConn.Params.Add('MetaDefSchema=' + FConfiguracao.Schema);
+    end;
+
+    if not FConfiguracao.Locking.IsEmpty then
+      FConn.Params.Add('LockingMode=' + FConfiguracao.Locking);
+
+    FConn.Connected := True;
+    Result := FConn;
+  except
+    raise Exception.Create('Não foi possivel realizar a conexao');
   end;
-
-  if not FConfiguracao.Locking.IsEmpty then
-    FConn.Params.Add('LockingMode=' + FConfiguracao.Locking);
-
-  FConn.Connected := True;
-  Result := FConn;
 end;
 
 constructor TConexaoFiredac.Create(Configuracao: iConfiguracao);

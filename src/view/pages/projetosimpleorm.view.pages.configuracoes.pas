@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, projetosimpleorm.controller.interfaces,
+  projetosimpleorm.controller;
 
 type
   TPageConfiguracoes = class(TForm)
@@ -29,35 +30,39 @@ type
     Label7: TLabel;
     Panel9: TPanel;
     Shape2: TShape;
-    Edit1: TEdit;
+    edtTipo: TEdit;
     Panel7: TPanel;
     Shape1: TShape;
-    Edit2: TEdit;
+    edtPath: TEdit;
     Panel11: TPanel;
     Shape4: TShape;
-    Edit4: TEdit;
+    edtUserName: TEdit;
     Panel14: TPanel;
     Shape6: TShape;
-    Edit6: TEdit;
+    edtPassword: TEdit;
     Panel15: TPanel;
     Shape7: TShape;
-    Edit7: TEdit;
+    edtPorta: TEdit;
     Panel17: TPanel;
     Label8: TLabel;
     Label9: TLabel;
     Label11: TLabel;
     Panel18: TPanel;
     Shape9: TShape;
-    Edit8: TEdit;
+    edtSchema: TEdit;
     Panel19: TPanel;
     Shape10: TShape;
-    Edit9: TEdit;
+    edtLocking: TEdit;
     Panel21: TPanel;
     Shape12: TShape;
-    Edit11: TEdit;
+    edtServidor: TEdit;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
-    { Private declarations }
+    FController: iController;
+
+    procedure CarregaDados;
   public
     { Public declarations }
   end;
@@ -69,9 +74,41 @@ implementation
 
 {$R *.dfm}
 
+procedure TPageConfiguracoes.CarregaDados;
+begin
+  edtTipo.Text := FController.Configuracao.DriverID;
+  edtPath.Text := FController.Configuracao.Database;
+  edtUserName.Text := FController.Configuracao.UserName;
+  edtPassword.Text := FController.Configuracao.Password;
+  edtPorta.Text := FController.Configuracao.Port;
+  edtSchema.Text := FController.Configuracao.Schema;
+  edtLocking.Text := FController.Configuracao.Locking;
+  edtServidor.Text := FController.Configuracao.Server;
+end;
+
+procedure TPageConfiguracoes.FormCreate(Sender: TObject);
+begin
+  FController := TController.New;
+  CarregaDados;
+end;
+
 procedure TPageConfiguracoes.SpeedButton1Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TPageConfiguracoes.SpeedButton2Click(Sender: TObject);
+begin
+  FController
+    .Configuracao
+      .DriverID(edtTipo.Text)
+      .Database(edtPath.Text)
+      .UserName(edtUserName.Text)
+      .Password(edtPassword.Text)
+      .Port(edtPorta.Text)
+      .Server(edtServidor.Text)
+      .Schema(edtSchema.Text)
+      .Locking(edtLocking.Text)
 end;
 
 end.

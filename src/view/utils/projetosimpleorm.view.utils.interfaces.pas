@@ -27,6 +27,10 @@ type
     function FormAction: iGerenciadorForm<iForm>;
   end;
 
+  iImage = interface
+    function ResourceImage(aImage: TImage; aResource: String): iImage;
+  end;
+
 implementation
 
 end.

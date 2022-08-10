@@ -28,14 +28,13 @@ uses
   projetosimpleorm.controller,
   projetosimpleorm.view.pages.configuracoes,
   projetosimpleorm.view.utils.interfaces,
-  projetosimpleorm.view.utils.impl.forms;
+  projetosimpleorm.view.utils.impl.forms, Vcl.ComCtrls;
 
 type
   TPagePedidoVenda = class(TForm)
     Panel4: TPanel;
     Panel1: TPanel;
     Panel2: TPanel;
-    gridItensPedido: TDBGrid;
     Panel3: TPanel;
     Panel13: TPanel;
     Panel16: TPanel;
@@ -115,7 +114,7 @@ type
     SpeedButton4: TSpeedButton;
     pnlback: TPanel;
     pnlEmb: TPanel;
-    DsPedidoItens: TDataSource;
+    ListPedidoProduto: TListView;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -123,12 +122,20 @@ type
     procedure btnListar_ListarTodosClick(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnConfirmarClick(Sender: TObject);
+    procedure btnFinalizarPedidoClick(Sender: TObject);
+    procedure btnCancelarpedidoClick(Sender: TObject);
+    procedure edtCodigoClienteChange(Sender: TObject);
+    procedure edtCodigoProdutoChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FController: iController;
     FForms: iForm;
+    FDataSource : TDataSource;
 
     procedure FixarTamanhoForm;
-    procedure FicarColumnsGrid;
+    procedure PreencheList;
+    procedure SplitViewAction(Value: TSplitView);
 
     procedure ChamaForm(Key: String; Form: TComponentClass);
   public
@@ -142,28 +149,53 @@ implementation
 
 {$R *.dfm}
 
+procedure TPagePedidoVenda.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  FDataSource.DisposeOf;
+end;
+
 procedure TPagePedidoVenda.FormCreate(Sender: TObject);
 begin
   FixarTamanhoForm;
-  FicarColumnsGrid;
+  FDataSource := TDataSource.Create(nil);
 
   FController := TController.New;
   FForms := TForms.New;
 end;
 
+procedure TPagePedidoVenda.SplitViewAction(Value: TSplitView);
+begin
+  Value.Opened := not Value.Opened;
+end;
+
+procedure TPagePedidoVenda.PreencheList;
+var
+  ListItem: TListItem;
+begin
+  ListItem := ListPedidoProduto.Items.Add;
+  ListItem.Caption := edtCodigoProduto.Text;
+  ListItem.SubItems.Add(FDataSource.DataSet.FieldByName('Descricao').AsString);
+  ListItem.SubItems.Add(edtQuantidade.Text);
+  ListItem.SubItems.Add(edtValorUnitario.Text);
+  ListItem.SubItems.Add(FormatFloat('#,##0.00',(FDataSource.DataSet.FieldByName('precovenda').AsCurrency*
+    (StrToInt(edtQuantidade.Text)))));
+end;
+
 procedure TPagePedidoVenda.SpeedButton1Click(Sender: TObject);
 begin
   ChamaForm('Produto', TPageProduto);
+  SplitViewAction(SplitView1);
 end;
 
 procedure TPagePedidoVenda.SpeedButton2Click(Sender: TObject);
 begin
   ChamaForm('Cliente', TPageCliente);
+  SplitViewAction(SplitView1);
 end;
 
 procedure TPagePedidoVenda.SpeedButton3Click(Sender: TObject);
 begin
-  SplitView1.Opened := not SplitView1.Opened;
+  SplitViewAction(SplitView1);
 end;
 
 procedure TPagePedidoVenda.SpeedButton4Click(Sender: TObject);
@@ -186,10 +218,50 @@ begin
   self.Constraints.MinWidth := self.ClientWidth;
 end;
 
+procedure TPagePedidoVenda.btnCancelarpedidoClick(Sender: TObject);
+begin
+  ListPedidoProduto.Items.Clear;
+end;
+
+procedure TPagePedidoVenda.btnConfirmarClick(Sender: TObject);
+begin
+  if ((not (edtCodigoCliente.Text <> '')) or
+      (not (edtNomeCliente.Text <> ''))) then
+  begin
+    ShowMessage('Favor informar o cliente');
+    exit;
+  end;
+  PreencheList;
+end;
+
+procedure TPagePedidoVenda.btnFinalizarPedidoClick(Sender: TObject);
+var
+  lIdPedido: Integer;
+  I: Integer;
+begin
+  try
+    lIdPedido := FController.Pedido.IDCliente(StrToInt(edtCodigoCliente.Text))
+    .Build.Inserir.This.Id;
+
+    for I := 0 to Pred(ListPedidoProduto.Items.Count) do
+    begin
+      FController.PedidoItens
+          .IdPedido(lIdPedido)
+          .IdProduto(ListPedidoProduto.Items[I].Caption.ToInteger)
+          .Quantidade(ListPedidoProduto.Items[I].SubItems[1].ToInteger)
+          .ValorUnitario(ListPedidoProduto.Items[I].SubItems[2].ToDouble)
+          .ValorTotal(ListPedidoProduto.Items[I].SubItems[3].ToDouble)
+          .Build.Inserir;
+    end;
+    ShowMessage(Format('O pedido %.5d realizado com sucesso',[lIdPedido]));
+  except
+    raise Exception.Create('Não foi possivel fazer o pedido');
+  end;
+end;
+
 procedure TPagePedidoVenda.btnListar_ListarTodosClick(Sender: TObject);
 begin
-  FController.Pedido.Build.ListarPorId(StrToInt(edtNumeroPedido.Text))
-    .DataSource(DsPedidoItens)
+  FController.Pedido.Build.ListarPorId(StrToInt(edtNumeroPedido.Text));
 end;
 
 procedure TPagePedidoVenda.ChamaForm(Key: String; Form: TComponentClass);
@@ -201,13 +273,31 @@ begin
     .FormAction.Add;
 end;
 
-procedure TPagePedidoVenda.FicarColumnsGrid;
+procedure TPagePedidoVenda.edtCodigoClienteChange(Sender: TObject);
+var
+  lId: Integer;
 begin
-  gridItensPedido.Columns[0].Width := pnlTitleCodigo.Width;
-  gridItensPedido.Columns[1].Width := pnlTitleDescricao.Width;
-  gridItensPedido.Columns[2].Width := pnlTitleQuantidade.Width + 1;
-  gridItensPedido.Columns[3].Width := pnlTitleValorUnitario.Width + 1;
-  gridItensPedido.Columns[4].Width := pnlTitleValorTotal.Width - 15;
+  TryStrToInt(edtCodigoCliente.Text, lId);
+  if not (lId = 0) then
+    edtNomeCliente.Text := FController.Pessoa.Build.ListarPorId(
+      (FController.Cliente.Build.ListarPorId(lId).This.IdPessoa)).This.Nome;
+end;
+
+procedure TPagePedidoVenda.edtCodigoProdutoChange(Sender: TObject);
+var
+  lId: Integer;
+begin
+  TryStrToInt(edtCodigoProduto.Text, lId);
+  if lId <> 0 then
+  begin
+    FController.Produto.Build.ListarPorId(lId).DataSource(FDataSource);
+    if not FDataSource.DataSet.IsEmpty then
+    begin
+      edtValorUnitario.Text := FormatFloat('#,##0.00',FDataSource.DataSet.FieldByName('precovenda').AsFloat);
+      exit;
+    end;
+    ShowMessage('Não foi possivel encontrar nenhum produto com o código informado');
+  end;
 end;
 
 end.

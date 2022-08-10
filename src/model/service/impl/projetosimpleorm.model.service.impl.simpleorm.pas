@@ -10,11 +10,26 @@ uses
   SimpleAttributes,
   SimpleQueryFiredac,
   System.Generics.Collections,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Error,
+  FireDAC.UI.Intf,
+  FireDAC.Phys.Intf,
+  FireDAC.Stan.Def,
+  FireDAC.Stan.Pool,
+  FireDAC.Stan.Async,
+  FireDAC.Phys,
+  FireDAC.Phys.SQLite,
+  FireDAC.Phys.SQLiteDef,
+  FireDAC.Stan.ExprFuncs,
+  FireDAC.Phys.SQLiteWrapper.Stat,
+  FireDAC.VCLUI.Wait,
+  FireDAC.Comp.UI,
+  FireDAC.Comp.Client,
   projetosimpleorm.model.service,
   projetosimpleorm.model.resource,
   Vcl.Graphics,
-  projetosimpleorm.model.resource.impl.factory,
-  FireDAC.Comp.Client;
+  projetosimpleorm.model.resource.impl.factory;
 
 type
   TServiceSimpleORM<T: Class, constructor> = class(TInterfacedObject,
@@ -30,12 +45,10 @@ type
     destructor Destroy; override;
     class function New(Parent: T): iService<T>;
     function ListarTodos: iService<T>; overload;
-    function ListarTodos(Value: TObjectList<T>): iService<T>; overload;
     function ListarPorId(aId: Integer): iService<T>;
-    function LostarPor(Field: String; Value: Variant): iService<T>;
+    function ListarPor(Field: String; Value: Variant): iService<T>;
     function Inserir: iService<T>;
     function Atualizar: iService<T>;
-//    function Salvar: iService<T>;
     function Excluir: iService<T>; overload;
     function Excluir(Field, Value: String): iService<T>; overload;
     function DataSource(var aDataSource: TDataSource): iService<T>;
@@ -93,7 +106,7 @@ end;
 function TServiceSimpleORM<T>.ListarPorId(aId: Integer): iService<T>;
 begin
   Result := Self;
-  FDAO.Find(aId);
+  FParent := FDAO.Find(aId);
 end;
 
 function TServiceSimpleORM<T>.ListarTodos: iService<T>;
@@ -102,29 +115,17 @@ begin
   FDAO.Find(False);
 end;
 
-function TServiceSimpleORM<T>.ListarTodos(Value: TObjectList<T>): iService<T>;
-begin
-  Result := Self;
-  FDAO.Find(Value);
-end;
-
-function TServiceSimpleORM<T>.LostarPor(Field: String; Value: Variant)
+function TServiceSimpleORM<T>.ListarPor(Field: String; Value: Variant)
   : iService<T>;
 begin
   Result := Self;
-  FDAO.Find(Field,Value);
+  FDAO.Find(FParent,Field,Value);
 end;
 
 class function TServiceSimpleORM<T>.New(Parent: T): iService<T>;
 begin
   Result := Self.Create(Parent);
 end;
-
-//function TServiceSimpleORM<T>.Salvar: iService<T>;
-//begin
-//  Result := Self;
-//  if not FParent. then
-//end;
 
 function TServiceSimpleORM<T>.This: T;
 begin

@@ -8,7 +8,11 @@ uses
   projetosimpleorm.controller.dto.impl.cliente,
   projetosimpleorm.controller.dto.impl.pedido,
   projetosimpleorm.controller.dto.impl.pedidoitens,
-  projetosimpleorm.controller.dto.impl.produto;
+  projetosimpleorm.controller.dto.impl.produto,
+  projetosimpleorm.controller.dto.impl.pessoa,
+  projetosimpleorm.controller.dto.impl.endereco,
+  projetosimpleorm.model.resource,
+  projetosimpleorm.model.resource.impl.configuracao;
 
 type
   TController = class(TInterfacedObject, iController)
@@ -17,6 +21,9 @@ type
       FPedidoItens: iPedidoItens;
       FProduto: iProduto;
       FCliente: iCliente;
+      FPessoa: iPessoa;
+      FEndereco: iEndereco;
+      FConfiguracao: iConfiguracao;
     public
       constructor Create;
       destructor Destroy; override;
@@ -25,6 +32,9 @@ type
       function PedidoItens: iPedidoItens;
       function Produto: iProduto;
       function Cliente: iCliente;
+      function Pessoa: iPessoa;
+      function Endereco: iEndereco;
+      function Configuracao: iConfiguracao;
   end;
 
 implementation
@@ -36,6 +46,13 @@ begin
   Result := FCliente;
 end;
 
+function TController.Configuracao: iConfiguracao;
+begin
+  if not Assigned(FConfiguracao) then
+    FConfiguracao := TConfiguracao.New;
+  Result := FConfiguracao;
+end;
+
 constructor TController.Create;
 begin
 
@@ -45,6 +62,13 @@ destructor TController.Destroy;
 begin
 
   inherited;
+end;
+
+function TController.Endereco: iEndereco;
+begin
+  if not Assigned(FEndereco) then
+    FEndereco := TEnderecoDTO.New;
+  Result := FEndereco;
 end;
 
 class function TController.New : iController;
@@ -64,6 +88,13 @@ begin
   if not Assigned(FPedidoItens) then
     FPedidoItens := TPedidoItensDTO.New;
   Result := FPedidoItens;
+end;
+
+function TController.Pessoa: iPessoa;
+begin
+  if not Assigned(FPessoa) then
+    FPessoa := TPessoaDTO.New;
+  Result := FPessoa;
 end;
 
 function TController.Produto: iProduto;

@@ -63,7 +63,7 @@ end;
 
 destructor TConfiguracao.Destroy;
 begin
-
+  LocalCache.SaveToStorage('simpleorm.lc4');
   inherited;
 end;
 

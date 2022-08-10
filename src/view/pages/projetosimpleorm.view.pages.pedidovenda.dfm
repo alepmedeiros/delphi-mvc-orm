@@ -5,7 +5,7 @@ object PagePedidoVenda: TPagePedidoVenda
   BorderStyle = bsDialog
   Caption = 'Tela de Pedido de vendas SimpleORM'
   ClientHeight = 670
-  ClientWidth = 850
+  ClientWidth = 860
   Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,75 +14,84 @@ object PagePedidoVenda: TPagePedidoVenda
   Font.Style = []
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlback: TPanel
     Left = 0
     Top = 0
-    Width = 850
+    Width = 860
     Height = 670
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 850
     object pnlContainer: TPanel
       Left = 0
       Top = 40
-      Width = 850
+      Width = 860
       Height = 630
       Align = alClient
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 850
       DesignSize = (
-        850
+        860
         630)
       object pnlEmb: TPanel
         Left = 0
         Top = 0
-        Width = 850
+        Width = 860
         Height = 630
         Align = alClient
         TabOrder = 2
+        ExplicitWidth = 850
         object Panel4: TPanel
           Left = 1
           Top = 1
-          Width = 848
+          Width = 858
           Height = 628
           Align = alClient
           BevelOuter = bvNone
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
+          ExplicitWidth = 848
           object Panel1: TPanel
             Left = 0
             Top = 0
-            Width = 848
+            Width = 858
             Height = 209
             Align = alTop
             BevelOuter = bvNone
             Padding.Left = 10
             Padding.Right = 10
             TabOrder = 0
+            ExplicitWidth = 848
             object Panel13: TPanel
               Left = 10
               Top = 0
-              Width = 828
+              Width = 838
               Height = 66
               Align = alTop
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitWidth = 828
               object Panel22: TPanel
-                Left = 512
+                Left = 522
                 Top = 0
                 Width = 316
                 Height = 66
                 Align = alRight
                 BevelOuter = bvNone
+                Enabled = False
                 TabOrder = 0
+                ExplicitLeft = 512
                 object Label9: TLabel
                   Left = 32
                   Top = 7
@@ -188,15 +197,16 @@ object PagePedidoVenda: TPagePedidoVenda
               object Panel23: TPanel
                 Left = 0
                 Top = 0
-                Width = 512
+                Width = 522
                 Height = 66
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 1
+                ExplicitWidth = 512
                 object Label2: TLabel
                   Left = 0
                   Top = 0
-                  Width = 512
+                  Width = 522
                   Height = 21
                   Align = alTop
                   Caption = 'Pedido de '
@@ -211,7 +221,7 @@ object PagePedidoVenda: TPagePedidoVenda
                 object Label1: TLabel
                   Left = 0
                   Top = 21
-                  Width = 512
+                  Width = 522
                   Height = 45
                   Align = alClient
                   Caption = 'Venda'
@@ -229,11 +239,12 @@ object PagePedidoVenda: TPagePedidoVenda
             object Panel5: TPanel
               Left = 10
               Top = 66
-              Width = 664
+              Width = 674
               Height = 143
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 664
               object Label13: TLabel
                 Left = 0
                 Top = 9
@@ -341,6 +352,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
+                  OnChange = edtCodigoProdutoChange
                 end
               end
               object Panel12: TPanel
@@ -525,17 +537,19 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Style = []
                   ParentFont = False
                   TabOrder = 0
+                  OnChange = edtCodigoClienteChange
                 end
               end
             end
             object Panel8: TPanel
-              Left = 674
+              Left = 684
               Top = 66
               Width = 164
               Height = 143
               Align = alRight
               BevelOuter = bvNone
               TabOrder = 2
+              ExplicitLeft = 674
               object Panel25: TPanel
                 Left = 14
                 Top = 83
@@ -575,6 +589,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
+                  OnClick = btnConfirmarClick
                   ExplicitTop = 4
                 end
               end
@@ -583,7 +598,7 @@ object PagePedidoVenda: TPagePedidoVenda
           object Panel2: TPanel
             Left = 0
             Top = 209
-            Width = 848
+            Width = 858
             Height = 361
             Align = alClient
             BevelOuter = bvNone
@@ -591,72 +606,16 @@ object PagePedidoVenda: TPagePedidoVenda
             Padding.Right = 10
             Padding.Bottom = 10
             TabOrder = 1
-            object gridItensPedido: TDBGrid
-              Left = 10
-              Top = 30
-              Width = 828
-              Height = 321
-              Align = alClient
-              BorderStyle = bsNone
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -13
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              Options = [dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick, dgTitleHotTrack]
-              ParentFont = False
-              TabOrder = 0
-              TitleFont.Charset = DEFAULT_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'Tahoma'
-              TitleFont.Style = []
-              Columns = <
-                item
-                  Expanded = False
-                  FieldName = 'Codigo'
-                  ReadOnly = True
-                  Title.Caption = 'C'#243'digo'
-                  Width = 92
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'Descricao'
-                  ReadOnly = True
-                  Title.Caption = 'Descri'#231#227'o'
-                  Width = 272
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'Quantidade'
-                  Width = 95
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'ValorUnitario'
-                  Title.Caption = 'Valor Unit'#225'rio'
-                  Width = 102
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'Total'
-                  ReadOnly = True
-                  Width = 252
-                  Visible = True
-                end>
-            end
+            ExplicitWidth = 848
             object Panel16: TPanel
               Left = 10
               Top = 0
-              Width = 828
+              Width = 838
               Height = 30
               Align = alTop
               BevelOuter = bvNone
-              TabOrder = 1
+              TabOrder = 0
+              ExplicitWidth = 828
               object pnlTitleDescricao: TPanel
                 AlignWithMargins = True
                 Left = 94
@@ -828,11 +787,11 @@ object PagePedidoVenda: TPagePedidoVenda
                 AlignWithMargins = True
                 Left = 565
                 Top = 0
-                Width = 261
+                Width = 273
                 Height = 30
                 Margins.Left = 0
                 Margins.Top = 0
-                Margins.Right = 2
+                Margins.Right = 0
                 Margins.Bottom = 0
                 Align = alClient
                 Alignment = taRightJustify
@@ -848,10 +807,11 @@ object PagePedidoVenda: TPagePedidoVenda
                 ParentBackground = False
                 ParentFont = False
                 TabOrder = 4
+                ExplicitWidth = 263
                 object Label7: TLabel
                   Left = 0
                   Top = 5
-                  Width = 255
+                  Width = 267
                   Height = 25
                   Align = alClient
                   Alignment = taRightJustify
@@ -862,23 +822,68 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
-                  ExplicitLeft = 185
+                  ExplicitLeft = 187
                   ExplicitWidth = 70
                   ExplicitHeight = 18
                 end
               end
             end
+            object ListPedidoProduto: TListView
+              Left = 10
+              Top = 30
+              Width = 838
+              Height = 321
+              Align = alClient
+              BevelInner = bvNone
+              BevelOuter = bvNone
+              Columns = <
+                item
+                  Caption = 'Codigo'
+                  Width = 92
+                end
+                item
+                  Caption = 'Descricao'
+                  Width = 272
+                end
+                item
+                  Alignment = taRightJustify
+                  Caption = 'Quantidade'
+                  Width = 97
+                end
+                item
+                  Alignment = taRightJustify
+                  Caption = 'ValorUnitario'
+                  Width = 102
+                end
+                item
+                  Alignment = taRightJustify
+                  Caption = 'ValorTotal'
+                  Width = 261
+                end>
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Tahoma'
+              Font.Style = []
+              RowSelect = True
+              ParentFont = False
+              ShowColumnHeaders = False
+              TabOrder = 1
+              ViewStyle = vsReport
+              ExplicitWidth = 828
+            end
           end
           object Panel3: TPanel
             Left = 0
             Top = 570
-            Width = 848
+            Width = 858
             Height = 58
             Align = alBottom
             BevelOuter = bvNone
             Padding.Left = 10
             Padding.Right = 10
             TabOrder = 2
+            ExplicitWidth = 848
             object Panel26: TPanel
               Left = 10
               Top = 0
@@ -926,6 +931,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
+                  OnClick = btnCancelarpedidoClick
                   ExplicitLeft = -11
                 end
               end
@@ -968,6 +974,7 @@ object PagePedidoVenda: TPagePedidoVenda
                   Font.Name = 'Tahoma'
                   Font.Style = []
                   ParentFont = False
+                  OnClick = btnFinalizarPedidoClick
                   ExplicitLeft = -11
                 end
               end
@@ -975,16 +982,17 @@ object PagePedidoVenda: TPagePedidoVenda
             object Panel9: TPanel
               Left = 410
               Top = 0
-              Width = 428
+              Width = 438
               Height = 58
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 428
               DesignSize = (
-                428
+                438
                 58)
               object Panel27: TPanel
-                Left = 166
+                Left = 176
                 Top = 8
                 Width = 265
                 Height = 41
@@ -995,6 +1003,7 @@ object PagePedidoVenda: TPagePedidoVenda
                 Padding.Right = 5
                 Padding.Bottom = 5
                 TabOrder = 0
+                ExplicitLeft = 166
                 object Shape5: TShape
                   Left = 5
                   Top = 5
@@ -1164,13 +1173,14 @@ object PagePedidoVenda: TPagePedidoVenda
     object Panel17: TPanel
       Left = 0
       Top = 0
-      Width = 850
+      Width = 860
       Height = 40
       Align = alTop
       BevelOuter = bvNone
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 850
       object Panel18: TPanel
         Left = 0
         Top = 0
@@ -1512,7 +1522,7 @@ object PagePedidoVenda: TPagePedidoVenda
         end
       end
       object Panel28: TPanel
-        Left = 810
+        Left = 820
         Top = 0
         Width = 40
         Height = 40
@@ -1523,6 +1533,7 @@ object PagePedidoVenda: TPagePedidoVenda
         Padding.Right = 2
         Padding.Bottom = 2
         TabOrder = 1
+        ExplicitLeft = 810
         object Image2: TImage
           AlignWithMargins = True
           Left = 9
@@ -2913,9 +2924,5 @@ object PagePedidoVenda: TPagePedidoVenda
         end
       end
     end
-  end
-  object DsPedidoItens: TDataSource
-    Left = 513
-    Top = 386
   end
 end

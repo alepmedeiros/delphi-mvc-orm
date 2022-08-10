@@ -12,6 +12,7 @@ object PageConfiguracoes: TPageConfiguracoes
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnlContainer: TPanel
@@ -1244,6 +1245,7 @@ object PageConfiguracoes: TPageConfiguracoes
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = SpeedButton2Click
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -2051,7 +2053,7 @@ object PageConfiguracoes: TPageConfiguracoes
             Shape = stRoundRect
             ExplicitTop = 8
           end
-          object Edit1: TEdit
+          object edtTipo: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2095,7 +2097,7 @@ object PageConfiguracoes: TPageConfiguracoes
             ExplicitTop = 8
             ExplicitWidth = 143
           end
-          object Edit2: TEdit
+          object edtPath: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2138,7 +2140,7 @@ object PageConfiguracoes: TPageConfiguracoes
             Shape = stRoundRect
             ExplicitTop = 8
           end
-          object Edit4: TEdit
+          object edtUserName: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2182,7 +2184,7 @@ object PageConfiguracoes: TPageConfiguracoes
             ExplicitTop = 8
             ExplicitWidth = 143
           end
-          object Edit6: TEdit
+          object edtPassword: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2226,7 +2228,7 @@ object PageConfiguracoes: TPageConfiguracoes
             Shape = stRoundRect
             ExplicitTop = 8
           end
-          object Edit7: TEdit
+          object edtPorta: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2273,9 +2275,9 @@ object PageConfiguracoes: TPageConfiguracoes
         object Label9: TLabel
           Left = 311
           Top = 52
-          Width = 45
+          Width = 42
           Height = 16
-          Caption = 'N'#250'mero'
+          Caption = 'Locking'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
@@ -2318,7 +2320,7 @@ object PageConfiguracoes: TPageConfiguracoes
             ExplicitTop = 8
             ExplicitWidth = 143
           end
-          object Edit8: TEdit
+          object edtSchema: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2362,7 +2364,7 @@ object PageConfiguracoes: TPageConfiguracoes
             Shape = stRoundRect
             ExplicitWidth = 84
           end
-          object Edit9: TEdit
+          object edtLocking: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13
@@ -2406,7 +2408,7 @@ object PageConfiguracoes: TPageConfiguracoes
             Shape = stRoundRect
             ExplicitTop = 8
           end
-          object Edit11: TEdit
+          object edtServidor: TEdit
             AlignWithMargins = True
             Left = 11
             Top = 13

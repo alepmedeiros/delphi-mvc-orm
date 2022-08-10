@@ -1,5 +1,9 @@
 program ProjetoSimpleORM;
 
+
+
+{$R *.dres}
+
 uses
   Vcl.Forms,
   projetosimpleorm.view.pages.pedidovenda in 'src\view\pages\projetosimpleorm.view.pages.pedidovenda.pas' {PagePedidoVenda},
@@ -31,14 +35,16 @@ uses
   projetosimpleorm.controller in 'src\controller\projetosimpleorm.controller.pas',
   projetosimpleorm.view.utils.interfaces in 'src\view\utils\projetosimpleorm.view.utils.interfaces.pas',
   projetosimpleorm.view.utils.impl.forms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.forms.pas',
-  projetosimpleorm.view.utils.impl.gerenciadorforms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas';
+  projetosimpleorm.view.utils.impl.gerenciadorforms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas',
+  projetosimpleorm.utils.rttiutils in 'src\utils\projetosimpleorm.utils.rttiutils.pas',
+  projetosimpleorm.view.utils.impl.resourceimage in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
+  ReportMemoryLeaksOnShutdown := true;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TPagePedidoVenda, PagePedidoVenda);
-  Application.CreateForm(TPageConfiguracoes, PageConfiguracoes);
   Application.Run;
 end.
